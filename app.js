@@ -24,11 +24,9 @@ async function example() {
   }
 }
 
-
 // ESPN_USERNAME = 'taco'
 // ESPN_PASSWORD = 'passwordistaco'
 // ESPN_PLAYERS = 'http://games.espn.com/ffl/freeagency?leagueId=442780&teamId=7&seasonId=2018';
-
 
 // async function log_in_espn() {
 //   const browser = await puppeteer.launch();

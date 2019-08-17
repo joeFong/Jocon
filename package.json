@@ -1,0 +1,23 @@
+{
+  "name": "jocon",
+  "version": "1.0.0",
+  "description": "Fantasy Basketball",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeFong/Jocon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeFong/Jocon/issues"
+  },
+  "homepage": "https://github.com/joeFong/Jocon#readme",
+  "dependencies": {
+    "puppeteer": "^1.19.0",
+    "selenium-webdriver": "^4.0.0-alpha.4"
+  }
+}
