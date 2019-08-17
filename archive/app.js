@@ -1,4 +1,4 @@
-var Jocon = require('./jocon');
+var Jocon = require('../jocon');
 const jocon = new Jocon('joemoney888', 'jpGOTjnb92$!');
 const http = require('http');
 
@@ -11,12 +11,9 @@ const server = http.createServer((req, res) => {
   res.end('Hello World\n');
 });
  
-
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
-
     jocon.login();
-  
 });
 
 
