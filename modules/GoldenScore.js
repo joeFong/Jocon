@@ -8,6 +8,7 @@ module.exports = class GoldenScore {
         this.year = year;
     }
     calculateGoldenScore() {
+        console.log('calculating..');
         var wrapper = this;
         axios.get("http://data.nba.net/10s/prod/v1/"+ this.year + "/players.json").then((success) => {
             const cur_league_players = success.data.league.standard;
@@ -29,6 +30,7 @@ module.exports = class GoldenScore {
 
             Promise.all(promise_array).then((success) => {
                 //all player stats
+                console.log(success);
             });
         });
     }
