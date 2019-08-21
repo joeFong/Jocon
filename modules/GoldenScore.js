@@ -30,11 +30,7 @@ module.exports = class GoldenScore {
 
             Promise.all(promise_array).then((success) => {
                 //all player stats
-<<<<<<< HEAD
                 console.log(success.data);
-=======
-                console.log(success);
->>>>>>> 633479936cf077176d22e3eee162784e17e2330c
             });
         });
     }
