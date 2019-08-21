@@ -30,7 +30,7 @@ module.exports = class GoldenScore {
 
             Promise.all(promise_array).then((success) => {
                 //all player stats
-                console.log(success);
+                // console.log(success);
             });
         });
     }

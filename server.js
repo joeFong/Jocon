@@ -15,5 +15,5 @@ const goldenscore = new GoldenScore(2019);
 app.listen(`${PORT}`, () => {
   console.log(`listening on port ${PORT}`);
   // jocon.login();
-  goldenscore.calculateGoldenScore();
+  // goldenscore.calculateGoldenScore();
 })
