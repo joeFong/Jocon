@@ -11,5 +11,5 @@ app.use('/', routesRouter);
 
 app.listen(`${PORT}`, () => {
   console.log(`listening on port ${PORT}`);
-  // jocon.login();
+  jocon.login();
 })

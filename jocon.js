@@ -13,20 +13,18 @@ module.exports = class Jocon {
         try {
             await driver.get('http://www.espn.com/login');
 
-            // await driver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
+    
+            await driver.wait(until.elementLocated(By.id('disneyid-iframe')), 10000);
+            await driver.switchTo().frame(driver.findElement(By.id('disneyid-iframe'))).then(() => {
+                driver.findElement(By.css("input[type='email']")).sendKeys(this.user);
+                driver.findElement(By.css("input[type='password']")).sendKeys(this.password);
+                driver.findElement(By.css(".btn-submit")).click();
+                
+                driver.wait(until.elementLocated(By.css('.link-text')), 10000).then(() => {
+                    driver.get('https://www.espn.com/fantasy/basketball/');
+                });
 
-            await driver.switchTo().frame(await driver.findElement(By.name('disneyid-iframe'))).then((el) => {
-                console.log(el);
             });
-
-            // await driver.findElement(By.css("input[type='email']")).sendKeys(this.user)
-            // await driver.findElement(By.css("input[type='password']")).sendKeys(this.password)
-
-            // await driver.findElement(By.css("btn-submit")).click();
-
-            // await driver.switch_to.default_content();
-
-            // await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
         } finally {
             // await driver.quit();
         }
