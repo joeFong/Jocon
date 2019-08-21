@@ -19,7 +19,7 @@ module.exports = class GoldenScore {
 
             for(var i = 0; i < player_id_array.length; i++) {
                 this.getPlayerStats(player_id_array[i]).then((resp) => {
-                    console.log(resp);
+                    // console.log(resp);
                 });
             }
 

@@ -3,16 +3,12 @@ var router = express.Router();
 const request = require('request');
 
 router.get('/', function(req, res, next) {
-<<<<<<< HEAD
   let page = 0; 
   let per_page = 100;
 
   let allPlayersRequest = `https://www.balldontlie.io/api/v1/players?page=${page}&per_page=${per_page}`
 
   request.get(allPlayersRequest, (error, response, data) => {
-=======
-  request.get("http://data.nba.net/10s/prod/v1/2019/players.json", (error, response, data) => {
->>>>>>> d3105bbd4fd8c44a587611b54e4304f221f33b12
     const parsedData = JSON.parse(data);
     res.send(parsedData);
 
