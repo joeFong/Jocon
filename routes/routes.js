@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     let allPlayersPerPage = parsedData.data;
 
     allPlayersPerPage.forEach((player) => {
-      console.log(player.team.city);
+      // console.log(player.team.city);
     })
   })
 });
