@@ -14,34 +14,23 @@ module.exports = class GoldenScore {
             let player_id_array = new Array();
             
             for(var i = 0; i < cur_league_players.length; i++) {
-                player_id_array.push(cur_league_players[i].personId);
-            }
-
-            for(var i = 0; i < player_id_array.length; i++) {
-                this.getPlayerStats(player_id_array[i]).then((resp) => {
-                    console.log(resp);
+                player_id_array.push({
+                    person_id : cur_league_players[i].personId,
+                    first_name : cur_league_players[i].firstName,
+                    last_name : cur_league_players[i].lastName,
                 });
             }
 
+            var promise_array = [];
+            for(var i = 0; i < player_id_array.length; i++) {
+                var player = player_id_array[i];
+                promise_array.push(this.getPlayerStats(player_id_array[i].person_id));
+            }
+
+            Promise.all(promise_array).then((success) => {
+                //all player stats
+            });
         });
-        // request.get("http://data.nba.net/10s/prod/v1/"+ this.year + "/players.json", (error, response, data) => {
-        //     const parsedData = JSON.parse(data);
-        //     const cur_league_players = parsedData.league.standard;
-
-        //     let player_id_array = new Array();
-
-        //     for(var i = 0; i < cur_league_players.length; i++) {
-        //         player_id_array.push(cur_league_players[i].personId);
-        //     }
-
-        //     console.log(player_id_array);
-
-        //     for(var i = 0; i < player_id_array.length; i++) {
-        //         this.getPlayerStats(player_id_array[i]).then((resp) => {
-        //             console.log(resp);
-        //         });
-        //     }
-        // });
     }
 
     getPlayerStats(person_id) {
