@@ -1,9 +1,7 @@
 const request = require('request');
 const axios = require('axios');
 
-
 module.exports = class GoldenScore {
-
     constructor(year) {
         this.year = year;
     }
@@ -20,17 +18,31 @@ module.exports = class GoldenScore {
                     first_name : cur_league_players[i].firstName,
                     last_name : cur_league_players[i].lastName,
                 });
+
             }
 
             var promise_array = [];
             for(var i = 0; i < player_id_array.length; i++) {
                 var player = player_id_array[i];
+                // console.log(player);
                 promise_array.push(this.getPlayerStats(player_id_array[i].person_id));
             }
 
             Promise.all(promise_array).then((success) => {
                 //all player stats
-                // console.log(success);
+                for(var i = 0; i < success.length; i++) {
+                    if(success[i].hasOwnProperty('data') &&
+                     success[i].data.league.standard.hasOwnProperty('stats') && 
+                     success[i].data.league.standard.stats.hasOwnProperty('regularSeason') && 
+                     success[i].data.league.standard.stats.regularSeason.hasOwnProperty('season') &&
+                     success[i].data.league.standard.stats.regularSeason.season.length &&
+                     success[i].data.league.standard.stats.regularSeason.season[0].total.hasOwnProperty('ppg') && 
+                     success[i].data.league.standard.stats.regularSeason.season[0].total.ppg != '-1' && 
+                     success[i].data.league.standard.stats.regularSeason.season[0].total.ppg != '0') {
+                        let season_stats = success[i].data.league.standard.stats.regularSeason.season[0].total;
+                        // console.log(season_stats.utah[0]);
+                    }
+                }
             });
         });
     }

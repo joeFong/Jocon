@@ -1,21 +1,33 @@
 var express = require('express');
 var router = express.Router();
-const request = require('request');
+// const request = require('request');
+const axios = require('axios');
 
-router.get('/', function(req, res, next) {
 
-  let lotsOfData = `http://data.nba.net/10s/prod/v1/2018/players.json`
+let activePlayerList = [];
 
-  request.get(lotsOfData, (error, response, data) => {
-    const parsedData = JSON.parse(data);
-    res.send(parsedData);
+  router.get('/', function(req, res, next) {
+    axios.get('http://data.nba.net/10s/prod/v1/2018/players.json')
+      .then((response) => {
+        // console.log(response.data.league.standard[0]);
 
-    let nbaDataArray = parsedData.league.standard;
-    // console.log(parsedData.league.standard[0].firstName);
-    nbaDataArray.forEach((player) => {
-      console.log(player.firstName + ' ' + player.lastName + ' ' + player.personId);
-    })
+        res.send(response.data);
+        response.data.league.standard.forEach((player) => {
+          if(player.isActive) {
+            activePlayerList.push(new Player(player.personId));
+          }
+        })
+        return activePlayerList;
+      })
+      .catch((error) => {
+        // console.log(error);
+      })
   })
-});
+
+
+
+
+
+// });
 
 module.exports = router;

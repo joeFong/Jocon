@@ -1,5 +1,5 @@
 class Player {
-  constructor(firstName, lastName ,points, rebounds, assists, steals, threes, blocks, fgs, fts) {
+  constructor(playerId) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.points = points;
