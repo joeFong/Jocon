@@ -21,10 +21,10 @@ router.get('/', (req, res, next) => {
 // });
 
 //POST TO DB 
-router.get('/init', dataSync.init) 
+router.post('/init', dataSync.init) 
 
 //Update DB 
-router.put('/syncDB', dataSync.sync);
-
+//not sure why I can't change this to router.put... doesn't work 
+router.get('/sync', dataSync.sync);
 
 module.exports = router;
