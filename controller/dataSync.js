@@ -9,8 +9,6 @@ let playerObjectArr = [];
 exports.init = (req, res, next) => {
 const play_style = 'fundamental';
 
-exports.initDB = (req, res, next) => {
-
   getActivePlayers(2019)
     .then((activePlayers) => {
       activePlayers.forEach((player) => {
@@ -26,7 +24,7 @@ exports.initDB = (req, res, next) => {
             player['goldenscore'] = player.calculateGoldenScore(play_style);
 
             const playerDB = new playerModel({
-              playerId: player.playerId,
+              _id: player.playerId,
               firstName: player.firstName,
               lastName: player.lastName,
               stats: data,
@@ -92,4 +90,3 @@ exports.initDB = (req, res, next) => {
         throw err;
       })
   }
-}

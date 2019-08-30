@@ -20,12 +20,12 @@ class Jocon {
                 driver.wait(until.elementLocated(By.css('.link-text')), 10000).then(() => {
                     driver.get('https://www.espn.com/fantasy/basketball/');
                 });
-
             });
         } finally {
             // await driver.quit();
         }
     }
+
 
     async log_in_headless() {
         const browser = await puppeteer.launch();
