@@ -6,7 +6,7 @@ const Player = require('../classes/Player');
 let activePlayers = [];
 let playerObjectArr = [];
 
-exports.initDB = (req, res, next) => {
+exports.init = (req, res, next) => {
 
   getActivePlayers(2019)
     .then((activePlayers) => {
