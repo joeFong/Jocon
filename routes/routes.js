@@ -6,7 +6,14 @@ const dataSync = require('../controller/dataSync');
 //HomePage
 router.get('/', (req, res, next) => {
     res.send('Jocon is ALIVE!')
-})
+});
+
+
+//Jocon Restful Endpoints 
+const baseRoute = 'jocon';
+router.get('/' + baseRoute + '/', (req, res, next) => {
+    res.send('Jocon is ALIVE!')
+});
 
 //POST TO DB 
 router.get('/initDB', dataSync.init) 
