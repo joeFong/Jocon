@@ -6,7 +6,7 @@ const Player = require('../classes/Player');
 let activePlayers = [];
 let playerObjectArr = [];
 
-exports.sync = (req, res, next) => {
+exports.initDB = (req, res, next) => {
 
   getActivePlayers(2019)
     .then((activePlayers) => {
@@ -35,7 +35,7 @@ exports.sync = (req, res, next) => {
                 if (err) {
                   console.log(err);
                 }
-                // console.log(player);
+                console.log(player.firstName + ' ' + player.lastName + ' has been added to the collection');
               })
           })
       })

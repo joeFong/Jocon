@@ -1,5 +1,3 @@
-var GoldenScore = require('../modules/GoldenScore');
-
 class Player {
   constructor(playerId, firstName, lastName) {
     this.playerId = playerId;

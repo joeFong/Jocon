@@ -7,8 +7,7 @@ var Jocon = require('./jocon');
 const app = express();
 const PORT = 3000;
 
-var routesRouter = require('./routes/routes');
-
+const routesRouter = require('./routes/routes');
 const jocon = new Jocon('joemoney888', 'jpGOTjnb92$!');
 
 app.use(bodyParser.json());
