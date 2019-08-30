@@ -6,6 +6,8 @@ const Player = require('../classes/Player');
 let activePlayers = [];
 let playerObjectArr = [];
 
+const play_style = 'fundamental';
+
 exports.initDB = (req, res, next) => {
 
   getActivePlayers(2019)
@@ -20,7 +22,7 @@ exports.initDB = (req, res, next) => {
         getPlayerStats(2019, player.playerId)
           .then((data) => {
             player['stats'] = data;
-            player['goldenscore'] = player.calculateGoldenScore('fundamental');
+            player['goldenscore'] = player.calculateGoldenScore(play_style);
 
             const playerDB = new playerModel({
               playerId: player.playerId,
