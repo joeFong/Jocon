@@ -6,7 +6,13 @@ const Player = require('../classes/Player');
 let activePlayers = [];
 let playerObjectArr = [];
 
+<<<<<<< HEAD:controller/dataSync.js
 exports.init = (req, res, next) => {
+=======
+const play_style = 'fundamental';
+
+exports.initDB = (req, res, next) => {
+>>>>>>> a0fbd59c7b5e2e1b17fff06b766bbcc4eda53a09:controller/jocon.js
 
   getActivePlayers(2019)
     .then((activePlayers) => {
@@ -20,7 +26,7 @@ exports.init = (req, res, next) => {
         getPlayerStats(2019, player.playerId)
           .then((data) => {
             player['stats'] = data;
-            player['goldenscore'] = player.calculateGoldenScore('fundamental');
+            player['goldenscore'] = player.calculateGoldenScore(play_style);
 
             const playerDB = new playerModel({
               playerId: player.playerId,
