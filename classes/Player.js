@@ -17,10 +17,10 @@ class Player {
 
   // Require more thought into different AI playstyles. 
   calculateGoldenScore(playStyle) {
-  
-      if (playStyle === 'fundamental') {
-        return (parseFloat(this.stats.ppg) + parseFloat(this.stats.rpg) + parseFloat(this.stats.apg) + parseFloat(this.stats.spg) + parseFloat(this.stats.bpg)).toFixed(2); 
-      } 
+    
+    if (playStyle === 'fundamental') {
+      return (parseFloat(this.stats.ppg) + parseFloat(this.stats.rpg) + parseFloat(this.stats.apg) + parseFloat(this.stats.spg) + parseFloat(this.stats.bpg)).toFixed(2); 
+    } 
   }
 
 }

@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const {Builder, By, Key, until} = require('selenium-webdriver');
 
-module.exports = class Jocon {
+class Jocon {
 
     constructor(user, password) {
         this.user = user;
@@ -36,3 +36,6 @@ module.exports = class Jocon {
         await browser.close();
     };
 }
+
+
+module.exports = Jocon;

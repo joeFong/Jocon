@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-var Jocon = require('./jocon');
+var Jocon = require('./classes/Jocon');
 
 const app = express();
 const PORT = 3000;
