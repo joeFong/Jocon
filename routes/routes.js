@@ -16,6 +16,9 @@ router.get('/' + baseRoute + '/', (req, res, next) => {
 });
 
 //POST TO DB 
-router.get('/initDB', dataSync.init) 
+router.post('/initDB', dataSync.init) 
+
+//Update DB 
+router.put('/syncDB', dataSync.sync);
 
 module.exports = router;

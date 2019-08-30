@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const playerModel = require('../models/Player');
+const PlayerModel = require('../models/Player');
 const Player = require('../classes/Player');
 
 let activePlayers = [];
@@ -8,8 +8,6 @@ let playerObjectArr = [];
 
 exports.init = (req, res, next) => {
 const play_style = 'fundamental';
-
-exports.initDB = (req, res, next) => {
 
   getActivePlayers(2019)
     .then((activePlayers) => {
@@ -25,7 +23,7 @@ exports.initDB = (req, res, next) => {
             player['stats'] = data;
             player['goldenscore'] = player.calculateGoldenScore(play_style);
 
-            const playerDB = new playerModel({
+            const playerDB = new PlayerModel({
               playerId: player.playerId,
               firstName: player.firstName,
               lastName: player.lastName,
@@ -42,9 +40,40 @@ exports.initDB = (req, res, next) => {
               })
           })
       })
-
     })
     .catch((err) => {
+      next(err);
+    })
+}
+
+exports.sync = (req, res, next) => {
+  PlayerModel
+    .findById(playerId)
+    .then(post => {
+      if(!post) {
+        const error = new Error('Could not find post');
+        error.statusCode = 404;
+        throw error;
+      }
+      if(post.creator.toString() !== req.userId) {
+        const error = new Error('Not authorized');
+        error.statusCode = 403;
+        throw error;
+      }
+      post.name = name;
+      post.skill1 = skill1; 
+      post.skill2 = skill2;
+      post.skill3 = skill3;
+      post.link = link;
+      return post.save();
+    })
+    .then(result => {
+      res.status(200).json({message: 'Post updated', post: result}  );
+    })
+    .catch(err => {
+      if(!err.statusCode) {
+        err.statusCode = 500;
+      }
       next(err);
     })
 }
