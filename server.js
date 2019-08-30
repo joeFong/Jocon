@@ -22,7 +22,6 @@ mongoose
   .then(result => {
     app.listen(PORT, () => {
       console.log(`listening on port ${PORT}`);
-      // jocon.login();
     })
   })
   .catch((err) =>

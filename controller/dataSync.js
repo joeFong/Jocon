@@ -23,8 +23,8 @@ const play_style = 'fundamental';
             player['stats'] = data;
             player['goldenscore'] = player.calculateGoldenScore(play_style);
 
-            const playerDB = new PlayerModel({
-              playerId: player.playerId,
+            const playerDB = new playerModel({
+              _id: player.playerId,
               firstName: player.firstName,
               lastName: player.lastName,
               stats: data,
@@ -121,4 +121,3 @@ exports.sync = (req, res, next) => {
         throw err;
       })
   }
-}
